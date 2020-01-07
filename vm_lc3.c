@@ -151,11 +151,11 @@ int main(int argc, const char* argv[]) {
                 update_flags(r0);
                 break;
             case OP_ST:
-                mem[reg[R_PC] + sign_extend(instr & 0x1FF)] = reg[(instr >> 0x9) & 0x1FF];
+                mem[reg[R_PC] + sign_extend(instr & 0x1FF, 9)] = reg[(instr >> 0x9) & 0x1FF];
                 break;
             case OP_STI:
                 uint16_t sr = (instr >> 0x9) & 0x7;
-                mem[mem[reg[R_PC] + sign_extend(instr & 0x1FF)]] = sr;
+                mem[mem[reg[R_PC] + sign_extend(instr & 0x1FF, 9)]] = sr;
                 break;
             case OP_STR:
                 break;
